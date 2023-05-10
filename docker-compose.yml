@@ -10,5 +10,5 @@ services:
     image: app-image-proba
     ports:
       - 8080:8081
-    depends on:
+    depends_on:
       - modelService
