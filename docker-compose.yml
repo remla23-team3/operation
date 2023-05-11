@@ -1,14 +1,18 @@
 # docker-compose.yml
 services:
   modelService:
-    build: https://github.com/remla23-team3/model-service.git#add-flask-webservice
-    image: model-service
+    image: ghcr.io/remla23-team3/model-service:latest
     ports:
-      - 8082:6789
+      - 6789:6789
+    # networks: 
+    #   - my-shared-network
   app:
     build: https://github.com/remla23-team3/app.git#basic-app
-    image: app-image-proba
     ports:
       - 8080:8081
+    # networks: 
+    #   - my-shared-network
     depends_on:
       - modelService
+# networks:
+#   my-shared-network: {}
