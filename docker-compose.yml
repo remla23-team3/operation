@@ -1,0 +1,9 @@
+services:
+  model-service:
+    image: ghcr.io/remla23-team3/model-service:latest
+    ports:
+      - 6789:6789
+  app:
+    build: https://github.com/remla23-team3/app.git#basic-app
+    ports:
+      - 8081:8081
