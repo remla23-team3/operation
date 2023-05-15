@@ -74,3 +74,6 @@ minikube tunnel
 ### Accessing the service
 
 You can access the service by visiting `http://localhost`.
+
+## Running Grafana
+Apply the grafana.yml with `kubectl apply -f grafana.yml`. Setup port forwarding with `kubectl port-forward service/grafana 3000:3000`. Go to the dashboard at `localhost:3000`.
