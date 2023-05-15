@@ -74,3 +74,7 @@ minikube tunnel
 ### Accessing the service
 
 You can access the service by visiting `http://localhost`.
+
+#### Alternative for Linux
+If you are using Linux and localhost returns a refused connection, tunneling has failed. You can use an alternative approach
+by navigating to the external IP of app-service, which can be found with `kubectl get svc`.
