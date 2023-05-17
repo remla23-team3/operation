@@ -127,3 +127,44 @@ minikube tunnel
 ### Accessing the service
 
 You can access the service by visiting `http://localhost`.
+
+### Access Prometheus and check metrics
+In order to access Prometheus, you will need to first install the Promethues stack - kube-prometheus-stack package on Artifact Hub. 
+The following commands briefly introduce how to do that:
+
+```bash
+$ helm repo add prom-repo https://prometheus-community.github.io/helm-charts
+"prom-repo" has been added to your repositories
+
+$ helm repo update
+... Successfully got an update ...
+
+$ helm install myprom prom-repo/kube-prometheus-stack
+...
+```
+
+Once you have installed the prometheus stack, you can check that you have Prometheus by running again:
+
+```bash
+~ $ kubectl get services
+```
+You should have a few new myprom-.. services.
+
+Next, delete and apply the monitoring.yml file as follows:
+
+```bash
+kubectl delete -f kubernetes.yml
+
+kubectl apply -f monitoring.yml
+```
+Don't forget to have the tunnel running in a separate terminal and finally you can access Prometheus through the url that will be shown after running:
+
+```bash
+$ minikube service myprom-kube-prometheus-sta-prometheus --url
+```
+Once, you Prometheus has loaded, you can look into querying the metrics. For this, switch the view from Table to Graph.
+
+Enter one of the metrics as a query (e.g., remla23_team3:num_sentiment_total_requests) and press Execute. This will show the number of requests made.
+The metrics which are identified wit remla23_team3:... are generated from the webapp.
+
+
