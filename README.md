@@ -77,3 +77,13 @@ You can access the service by visiting `http://localhost`.
 
 ## Running Grafana
 Apply the grafana.yml with `kubectl apply -f grafana.yml`. Then after running `minikube tunnel`, visit the dashboard at `localhost:3000`.
+
+## Installing the Helm Chart
+
+Run the following command:
+
+```bash
+helm install -f remla23-team3/values.yaml remla23-team3 ./remla23-team3
+```
+
+This, in combination with running `minikube tunnel` should allow the user to visit `http://localhost`.
