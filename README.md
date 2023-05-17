@@ -87,3 +87,5 @@ helm install -f remla23-team3/values.yaml remla23-team3 ./remla23-team3
 ```
 
 This, in combination with running `minikube tunnel` should allow the user to visit `http://localhost`.
+
+`helm repo add remla23-team3-repo https://remla23-team3.github.io/operation/`
