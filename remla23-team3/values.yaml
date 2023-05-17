@@ -1,0 +1,21 @@
+image:
+  repository: nginx
+  pullPolicy: IfNotPresent
+  tag: ""
+
+nginx:
+  version: latest
+  port: 80
+
+imagePullSecrets: []
+nameOverride: "remal23-team3"
+fullnameOverride: "remal23-team3"
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: "remal23-team3"
+
+service:
+  type: NodePort
+  port: 80
