@@ -4,6 +4,6 @@ services:
     ports:
       - 6789:6789
   app:
-    build: https://github.com/remla23-team3/app.git#basic-app
+    build: https://github.com/remla23-team3/app.git#main
     ports:
       - 8081:8081

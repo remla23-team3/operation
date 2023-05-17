@@ -128,6 +128,10 @@ minikube tunnel
 
 You can access the service by visiting `http://localhost`.
 
+#### Alternative for Linux
+If you are using Linux and localhost returns a refused connection, tunneling has failed. You can use an alternative approach
+by navigating to the external IP of app-service, which can be found with `kubectl get svc`.
+
 ### Access Prometheus and check metrics
 In order to access Prometheus, you will need to first install the Promethues stack - kube-prometheus-stack package on Artifact Hub. 
 The following commands briefly introduce how to do that:
@@ -166,5 +170,6 @@ Once, you Prometheus has loaded, you can look into querying the metrics. For thi
 
 Enter one of the metrics as a query (e.g., remla23_team3:num_sentiment_total_requests) and press Execute. This will show the number of requests made.
 The metrics which are identified wit remla23_team3:... are generated from the webapp.
+
 
 
