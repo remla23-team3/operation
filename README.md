@@ -169,7 +169,7 @@ $ minikube service myprom-kube-prometheus-sta-prometheus --url
 Once, your Prometheus has loaded, you can look into querying the metrics. For this, switch the view from Table to Graph.
 
 Enter one of the metrics as a query (e.g., remla23_team3:num_sentiment_total_requests) and press Execute. This will show the number of requests made.
-The metrics which are identified wit remla23_team3:... are generated from the webapp.
+The metrics which are identified with remla23_team3:... are generated from the webapp.
 
 ## Traffic Management and Continuous Experimentation
 
@@ -201,3 +201,12 @@ if that is indeed the case you will see the following style in head tag
         cursor: pointer;
     }
 </style>`
+
+### Verify Prometheus 
+Make sure first, you have applied the prometheus.yaml, it is in istio-1.17.2/samples/addons/.
+You can access it as follows:
+```bash
+istioctl dashboard prometheus
+```
+You can now search for the metrics by typing remla23_team3:...You can also see the full list of metrics on 
+the metrics endpoint `http://localhost/metrics`.
