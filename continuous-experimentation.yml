@@ -39,7 +39,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: ghcr.io/remla23-team3/app:latest # (v0.0.5) with the red button
+          image: ghcr.io/remla23-team3/app:v0.0.5 # (v0.0.5) with the red button
           imagePullPolicy: Always
           ports:
             - containerPort: 8081
