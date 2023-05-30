@@ -73,6 +73,7 @@ kubectl create secret docker-registry registry-credentials \
 --docker-username=<github_username> \
 --docker-password=<personal_access_token>
 ```
+The personal access token requires the `read:packages` permission.
 
 To start the services one has to run the following command.
 
