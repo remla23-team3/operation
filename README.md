@@ -173,60 +173,49 @@ The metrics which are identified with remla23_team3:... are generated from the w
 
 ## Traffic Management and Continuous Experimentation
 
-In order to deploy two versions of app - v0.0.4 and v0.0.5 (the version with red-buttons), run: 
+In order to deploy two versions of app - v0.0.4 and v0.0.5 (the version with red buttons), one can run: 
 ```bash
 kubectl apply -f continuous-experimentation.yml
 ```
-and visit `http://localhost`. Refreshing the page a few times will display the two verions. 
-The weights for both versins are left to 50/50 in order to easily check the expected behaivour.
+and visit `http://localhost`. Refreshing the page a few times will display the two versions. 
+The weights for both versions are set to 50/50 in order to easily check the expected behaviour.
 You can perform a few requests and also check the configuration and the traffic on the Kaili dashboard
 by selecting the default namespace and Graph tab on the right.
 
-### Stablize the subset of requests
-To check the stabilization of the requests, perform the following steps:
+### Stabilize the subset of requests
+To check the stabilization of the requests, execute the following commands:
 ```bash
 kubectl delete -f continuous-experimentation.yml
 
 kubectl apply -f cont-experimentation-stabilize-requests.yml
 ```
 Next, open Postman and create a GET request to the following address `http://localhost`.
-Then select the Headers tab and create a new key - `user` and give it a value `user-red-button`.
-Send the request. You should now receive the html of the page with the red-button style, 
-if that is indeed the case you will see the following style in head tag
-`<style>
-    .big-red-button {
-        background-color: red;
-        color: white;
-        font-size: 20px;
-        padding: 10px 20px;
-        border: none;
-        cursor: pointer;
-    }
-</style>`
+Select the Headers tab and create a new key - `user` and give it a value `user-red-button`.
+After the request is sent, you should now receive the html of the page with the red button style.
+You can confirm this by finding the `.big-red-button` style in the head tag.
 
 ### Verify Prometheus 
-Make sure first, you have applied the prometheus.yaml, it is in istio-1.17.2/samples/addons/.
+First make sure that you have applied the prometheus.yaml in `istio-1.17.2/samples/addons/`.
 You can access it as follows:
 ```bash
 istioctl dashboard prometheus
 ```
-You can now search for the metrics by typing remla23_team3:...You can also see the full list of metrics on 
-the metrics endpoint `http://localhost/metrics`.
+You can now search for the metrics by typing `remla23_team3:` in the expression text box. 
+You can also see the full list of metrics on the metrics endpoint `http://localhost/metrics`.
 
-
-### Continiuous Experimentation - Two services 
-Make sure to delete the previous deployment, you can test this one by running:
+### Continuous Experimentation - Two services 
+Make sure to delete the previous deployment. You can test the two services configuration by running:
 ```bash
 kubectl apply -f continuous-experientation-two-services.yml
 ```
-Check on Kaili dashboard the two services, each one connected to a different version of the app.
+On the Kaili dashboard you can observe the two services, each one connected to a different version of the app.
 
 ## Additional Use Case
-We decided to implement the `Rate Limiting`, which blocks the user when more than 10 requests are sent per minute.
+We decided to implement `Rate Limiting`, which blocks the user when more than 10 requests are sent per minute.
 To check this use case, again make sure you have deleted all other deployments and run:
 ```bash
 kubectl apply -f rate-limiting.yml
 ```
 Now either try to send 10 requests with Postman (it is easier) or try to perform 10 requests in the browser.
-After you have performed 10 requests, the website should stop loading and you should get a response of `local_rate_limited`.
-Wait a minite and reload, the webiste is working again :)
+After you have performed 10 requests, the website should stop loading, and you should get a response of `local_rate_limited`.
+Wait a minute and reload and the website will work again!
