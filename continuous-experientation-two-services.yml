@@ -27,7 +27,7 @@ metadata:
   name: app-deployment-v1
   labels: { app: app, version: v1 }
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels: { app: app, version: v1}
   template:
