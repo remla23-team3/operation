@@ -179,6 +179,8 @@ kubectl apply -f continuous-experimentation.yml
 ```
 and visit `http://localhost`. Refreshing the page a few times will display the two verions. 
 The weights for both versins are left to 50/50 in order to easily check the expected behaivour.
+You can perform a few requests and also check the configuration and the traffic on the Kaili dashboard
+by selecting the default namespace and Graph tab on the right.
 
 ### Stablize the subset of requests
 To check the stabilization of the requests, perform the following steps:
