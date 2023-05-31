@@ -11,7 +11,6 @@ kubectl create secret docker-registry registry-credentials \
 --docker-password=<personal_access_token>
 ```
 
-
 # Assignment 3
 Specific prerequisites: You should have working istio installation on your cluster
 and be able to access istioctl fro mthe command line! 
@@ -123,6 +122,7 @@ To port-forward the services, run `minikube tunnel` in a separate terminal windo
 ## Kubernetes
 
 Don't forget to create the credentional, look in the Prerequisites.
+
 
 To start the services one has to run the following command.
 
