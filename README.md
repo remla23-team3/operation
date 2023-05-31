@@ -167,10 +167,49 @@ Don't forget to have the tunnel running in a separate terminal and finally you c
 ```bash
 $ minikube service myprom-kube-prometheus-sta-prometheus --url
 ```
-Once, you Prometheus has loaded, you can look into querying the metrics. For this, switch the view from Table to Graph.
+Once, your Prometheus has loaded, you can look into querying the metrics. For this, switch the view from Table to Graph.
 
 Enter one of the metrics as a query (e.g., remla23_team3:num_sentiment_total_requests) and press Execute. This will show the number of requests made.
-The metrics which are identified wit remla23_team3:... are generated from the webapp.
+The metrics which are identified with remla23_team3:... are generated from the webapp.
 
+## Traffic Management and Continuous Experimentation
 
+In order to deploy two versions of app - v0.0.4 and v0.0.5 (the version with red-buttons), run: 
+```bash
+kubectl apply -f continuous-experimentation.yml
+```
+and visit `http://localhost`. Refreshing the page a few times will display the two verions. 
+The weights for both versins are left to 50/50 in order to easily check the expected behaivour.
+You can perform a few requests and also check the configuration and the traffic on the Kaili dashboard
+by selecting the default namespace and Graph tab on the right.
 
+### Stablize the subset of requests
+To check the stabilization of the requests, perform the following steps:
+```bash
+kubectl delete -f continuous-experimentation.yml
+
+kubectl apply -f cont-experimentation-stabilize-requests.yml
+```
+Next, open Postman and create a GET request to the following address `http://localhost`.
+Then select the Headers tab and create a new key - `user` and give it a value `user-red-button`.
+Send the request. You should now receive the html of the page with the red-button style, 
+if that is indeed the case you will see the following style in head tag
+`<style>
+    .big-red-button {
+        background-color: red;
+        color: white;
+        font-size: 20px;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+    }
+</style>`
+
+### Verify Prometheus 
+Make sure first, you have applied the prometheus.yaml, it is in istio-1.17.2/samples/addons/.
+You can access it as follows:
+```bash
+istioctl dashboard prometheus
+```
+You can now search for the metrics by typing remla23_team3:...You can also see the full list of metrics on 
+the metrics endpoint `http://localhost/metrics`.
