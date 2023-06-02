@@ -76,7 +76,7 @@ kind: Service
 metadata:
   name: model-service
 spec:
-  # type: LoadBalancer
+  type: LoadBalancer
   selector:
     app: model
   ports:
@@ -89,7 +89,7 @@ kind: Service
 metadata:
   name: app-service
 spec:
-  # type: LoadBalancer
+  type: LoadBalancer
   selector:
     app: app
   ports:
