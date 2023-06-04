@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PrometheusRule
+metadata:
+  name: rule_file
+
+spec:
+  groups:
+    - name: example
+      rules:
+        - alert: LowAccuracy
+          expr: remla23_team3:accuracy < 0.1
+          labels:
+            severity: critical
+          annotations:
+            summary: Low accuracy detected

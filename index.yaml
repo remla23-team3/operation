@@ -3,12 +3,12 @@ entries:
   remla23-team3:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-05-17T14:08:28.731053+02:00"
+    created: "2023-06-05T00:25:03.74325517+02:00"
     description: A Helm chart for Kubernetes
-    digest: 3d21f63c22c9aa844519ed4f1a81febd8fc2636127d4dbe285c8057a5fe56d7f
+    digest: 2a89ba57f60ba725e9e6e9015bc8a2a1743c9aa9205b1db777191c6c94b39a99
     name: remla23-team3
     type: application
     urls:
-    - https://remla23-team3.github.io/operation/remla23-team3-0.1.0.tgz
+    - remla23-team3-0.1.0.tgz/remla23-team3-0.1.0.tgz
     version: 0.1.0
-generated: "2023-05-17T14:08:28.73033+02:00"
+generated: "2023-06-05T00:25:03.742814512+02:00"
