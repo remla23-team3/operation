@@ -1,11 +1,7 @@
-apiVersion: v1
-kind: PrometheusRule
-metadata:
-  name: rule_file
-
-spec:
-  groups:
-    - name: example
+additionalPrometheusRulesMap:
+  prometheus.rules:
+    groups:
+    - name: custom-alerts
       rules:
         - alert: LowAccuracy
           expr: remla23_team3:accuracy < 0.1
