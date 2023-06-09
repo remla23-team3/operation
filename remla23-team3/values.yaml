@@ -19,25 +19,3 @@ serviceAccount:
 service:
   type: NodePort
   port: 80
-
-#alertmanager:
-#  enabled: true
-#  configFiles:
-#    alertmanager.yaml: |
-#      {{ .Files.Get "templates/alertmanager.yaml" | indent 10 }}
-
-kube-prometheus-stack:
-#  prometheus:
-#    prometheusSpec:
-#      externalUrl: http://localhost/prometheus
-#      routePrefix: /prometheus
-
-  alertmanager:
-    config:
-      global:
-        resolve_timeout: 1m
-        # Default smpt server. Ideally same as one of the configs above, but it does not matter
-        # since it will use the values from the config.
-        # However, the alertmanager refuses to start if there is at least one email reveiver
-        # and not a global default smtp server. https://github.com/prometheus/alertmanager/issues/275
-        smtp_smarthost: smtp.gmail.com:587
