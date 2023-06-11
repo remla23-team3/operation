@@ -1,8 +1,8 @@
 # Operation 
-# Prerequasites for each assignment
+# Prerequisites for each assignment
 
 Make sure you have installed minikube!
-Create the credentials to pull the images from the Github Crate Registry. Do this with the following command.
+Create the credentials to pull the images from the Github Container Registry. Do this with the following command.
 
 ```bash
 kubectl create secret docker-registry registry-credentials \
@@ -12,8 +12,8 @@ kubectl create secret docker-registry registry-credentials \
 ```
 
 # Assignment 3
-Specific prerequisites: You should have working istio installation on your cluster
-and be able to access istioctl fro mthe command line! 
+Specific prerequisites: You should have a working istio installation on your cluster
+and be able to access istioctl from the command line! 
 
 ## Traffic Management and Continuous Experimentation
 
@@ -46,6 +46,11 @@ istioctl dashboard prometheus
 ```
 You can now search for the metrics by typing `remla23_team3:` in the expression text box.
 You can also see the full list of metrics on the metrics endpoint `http://localhost/metrics`.
+
+### Experimental setup
+For conducting an experiment to find out which version of the app gives better results, one
+could make use of the `remla23_team3:feedback_percentage`. A high percentage indicates that
+many users leave feedback after submitting a review, which could be beneficial for the product.
 
 ### Continuous Experimentation - Two services
 Make sure to delete the previous deployment. You can test the two services configuration by running:
