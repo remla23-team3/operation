@@ -1,0 +1,11 @@
+additionalPrometheusRulesMap:
+  prometheus.rules:
+    groups:
+    - name: custom-alerts
+      rules:
+        - alert: LowAccuracy
+          expr: remla23_team3:accuracy < 0.1
+          labels:
+            severity: critical
+          annotations:
+            summary: Low accuracy detected

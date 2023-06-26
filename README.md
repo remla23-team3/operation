@@ -124,6 +124,21 @@ model-service                             LoadBalancer   xxx.xxx.xxx.xxx  <pendi
 
 To port-forward the services, run `minikube tunnel` in a separate terminal window. Then, to access the service, one can visit `http://localhost` for the application and `http://localhost:3000` for the dashboard.
 
+### Accessing the Alert Manager
+
+To access the alert manager, you have to install the kube-prometheus-stack. 
+
+```bash
+helm repo add prom-repo https://prometheus-community.github.io/helm-charts
+helm repo update
+helm install myprom -f rule_file.yaml prom-repo/kube-prometheus-stack
+```
+
+The `rule_file.yaml` can be found in the repository's root. 
+By port-forwarding the pod usually called `prometheus-myprom-kube-prometheus-sta-prometheus-0`, you can access the alerts in Prometheus' Alerts section. 
+One rule is set up in the `rule_file.yaml`. 
+It will fire when the feedback of the users drops below 10%, indicating a need to investigate why the model is making bad predictions.
+
 ## Kubernetes
 
 Don't forget to create the credentional, look in the Prerequisites.
