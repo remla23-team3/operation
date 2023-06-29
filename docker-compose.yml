@@ -6,7 +6,7 @@ services:
     ports:
       - 6789:6789
     volumes:
-      - ./:/model/remla23
+      - ./model-training/:/usr/share/model-training/data
   app:
     build: https://github.com/remla23-team3/app.git#main
     ports:
@@ -14,4 +14,4 @@ services:
     environment:
       - DEBUG=0
     volumes:
-      - ./:/model/remla23
+      - ./app/:/usr/share/app/data
