@@ -19,8 +19,33 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 6789
+          env:
+            - name: NAMEKEY
+              valueFrom:
+                configMapKeyRef:
+                  name: model-configmap
+                  key: namekey
+            - name: PASS
+              valueFrom:
+                secretKeyRef:
+                  name: model-secret
+                  key: pass
       imagePullSecrets:
         - name: registry-credentials
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: model-configmap
+data:
+  namekey: Model
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: model-secret
+data:
+  pass: YmFy
 ---
 apiVersion: v1
 kind: Service
@@ -55,8 +80,33 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8081
+          env:
+            - name: NAMEKEY
+              valueFrom:
+                configMapKeyRef:
+                  name: app-configmap
+                  key: namekey
+            - name: PASS
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: pass
       imagePullSecrets:
         - name: registry-credentials
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-configmap
+data:
+  namekey: App
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secret
+data:
+  pass: YmFy
 ---
 apiVersion: v1
 kind: Service

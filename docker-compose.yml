@@ -1,9 +1,17 @@
 services:
   model-service:
     image: ghcr.io/remla23-team3/model-service:latest
+    environment:
+      - DEBUG=0
     ports:
       - 6789:6789
+    volumes:
+      - ./:/model/remla23
   app:
     build: https://github.com/remla23-team3/app.git#main
     ports:
       - 8081:8081
+    environment:
+      - DEBUG=0
+    volumes:
+      - ./:/model/remla23
