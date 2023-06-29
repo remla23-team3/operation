@@ -216,14 +216,14 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "remla23_team3:feedback_percentage",
+          "expr": "avg_over_time(remla23_team3:feedback_percentage[10m])",
           "instant": false,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Ratio of users leaving feedback",
+      "title": "Ratio of users leaving feedback past 10 minutes",
       "transformations": [
         {
           "id": "reduce",
@@ -336,6 +336,6 @@
   "timezone": "",
   "title": "Restaurant Dashboard v2",
   "uid": "S198VS9Vk",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
