@@ -241,6 +241,13 @@ Once, your Prometheus has loaded, you can look into querying the metrics. For th
 Enter one of the metrics as a query (e.g., remla23_team3:num_sentiment_total_requests) and press Execute. This will show the number of requests made.
 The metrics which are identified with remla23_team3:... are generated from the webapp.
 
+### Accessing Grafana
+Apply the grafana.yml:
+```bash
+kubectl apply -f remla23-team3/templates/grafana.yml
+```
+
+Navigate to dashboards and import the dashboard called `restaurant_dashboard.yml`. Now you can see the metrics of the app in real time in your grafana dashboard.
 
 # Assignment 1
 
