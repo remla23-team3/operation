@@ -30,6 +30,13 @@ spec:
                 secretKeyRef:
                   name: model-secret
                   key: pass
+          volumeMounts:
+            - name: model-volume
+              mountPath: /data_model_in/
+      volumes:
+        - name: model-volume
+          hostPath:
+            path: /data_model_out/
       imagePullSecrets:
         - name: registry-credentials
 ---
@@ -91,6 +98,13 @@ spec:
                 secretKeyRef:
                   name: app-secret
                   key: pass
+          volumeMounts:
+            - name: app-volume
+              mountPath: /data_app_in/
+      volumes:
+        - name: app-volume
+          hostPath:
+            path: /data_app_out/
       imagePullSecrets:
         - name: registry-credentials
 ---
